@@ -64,18 +64,25 @@ def product_list_api(request):
 
 @api_view(['POST'])
 def register_order(request):
-    if request.method == 'POST':
-        order_data = request.data
-        order = Order.objects.create(
-            first_name=order_data['firstname'],
-            last_name=order_data.get('lastname', ''),
-            phone_number=order_data['phonenumber'],
-            address=order_data['address']
+    order_data = request.data
+
+    if 'products' not in order_data:
+        return Response({'error': 'Нет обязательного поле products.'}, status=400)
+    if not isinstance(order_data['products'], list):
+        return Response({'error': 'Поле products должно быть списком'}, status=400)
+    if len(order_data['products']) == 0:
+        return Response({'error': 'Поле products не может быть пустым'}, status=400)
+
+    order = Order.objects.create(
+        first_name=order_data['firstname'],
+        last_name=order_data.get('lastname', ''),
+        phone_number=order_data['phonenumber'],
+        address=order_data['address']
+    )
+    for product_item in order_data['products']:
+        OrderItem.objects.create(
+            order=order,
+            product_id=product_item['product'],
+            quantity=product_item['quantity']
         )
-        for product_item in order_data['products']:
-            OrderItem.objects.create(
-                order=order,
-                product_id=product_item['product'],
-                quantity=product_item['quantity']
-            )
-        return Response({'status': 'ok'})
+    return Response({'status': 'ok'})
