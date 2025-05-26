@@ -2,15 +2,16 @@ from django.http import JsonResponse
 from django.templatetags.static import static
 from django.shortcuts import get_object_or_404
 
+from rest_framework import serializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer, IntegerField, CharField, ListField
 
 from phonenumber_field.phonenumber import to_python
 
 from .models import Product
 from .models import Order
 from .models import OrderItem
-
 
 def banners_list_api(request):
     # FIXME move data to db?
@@ -64,80 +65,54 @@ def product_list_api(request):
     })
 
 
-@api_view(['POST'])
-def register_order(request):
-    order_data = request.data
+class OrderItemSerializer(Serializer):
+    product = IntegerField()
+    quantity = IntegerField(min_value=1)
 
-    #  Проверка поля products
-    if 'products' not in order_data:
-        return Response({'error': 'Нет обязательного поля products.'}, status=400)
-    if not isinstance(order_data['products'], list):
-        return Response({'error': 'Поле products должно быть списком'}, status=400)
-    if len(order_data['products']) == 0:
-        return Response({'error': 'Поле products не может быть пустым'}, status=400)
+    def validate_product(self, value):
+        if not Product.objects.filter(id=value).exists():
+            raise serializers.ValidationError(f'Продукт {value} не найден')
+        return value
 
-    # Проверка поля firstname
-    if 'firstname' not in order_data:
-        return Response({'error': 'Нет обязательного поля firstname.'}, status=400)
-    if not isinstance(order_data['firstname'], str) or not order_data['firstname'].strip():
-        return Response({'error': 'Поле firstname должно быть не пустой строкой'}, status=400)
 
-    # Проверка поля lastname
-    if 'lastname' in order_data and not isinstance(order_data['lastname'], str):
-        return Response({'error': 'Поле lastname должно быть строкой'}, status=400)
-
-    # Проверка поля phonenumber
-    if 'phonenumber' not in order_data:
-        return Response({'error': 'Нет обязательного поля phonenumber.'}, status=400)
-
-    phone = order_data['phonenumber'].strip()
-
-    if not phone:
-        return Response({'error': 'Номер телефона не может быть пустым'}, status=400)
-    if phone.startswith('8') and len(phone) == 11:
-        phone = '+7' + phone[1:]
-    elif phone.startswith('7') and len(phone) == 11:
-        phone = '+' + phone
-
-    try:
-        phone_number = to_python(phone)
-        if not phone_number or not phone_number.is_valid():
-            return Response({'error': 'Введите номер в формате +7XXX... или 8XXX...'}, status=400)
-    except Exception:
-        return Response({'error': 'Неверный формат номера'}, status=400)
-
-    order_data['phonenumber'] = str(phone_number)
-
-    # Проверка поля address
-    if 'address' not in order_data:
-        return Response({'error': 'Нет обязательного поля address.'}, status=400)
-    if not isinstance(order_data['address'], str) or not order_data['address'].strip():
-        return Response({'error': 'Поле address должно быть не пустой строкой'}, status=400)
-
-    # Создание заказа
-    order = Order.objects.create(
-        first_name=order_data['firstname'],
-        last_name=order_data.get('lastname', ''),
-        phone_number=order_data['phonenumber'],
-        address=order_data['address']
+class OrderSerializer(Serializer):
+    firstname = CharField(max_length=50, required=True)
+    lastname = CharField(max_length=50, required=False, allow_blank=True)
+    phonenumber = CharField(max_length=20, required=True)
+    address = CharField(max_length=100, required=True)
+    products = ListField(
+        child=OrderItemSerializer(),
+        allow_empty=False
     )
 
-    # Проверка продуктов
-    for product_item in order_data['products']:
-        product_id = product_item['product']
-        quantity = product_item['quantity']
+    def validate_phonenumber(self, value):
+        phone = value.strip()
+        if phone.startswith('8') and len(phone) == 11:
+            phone = '+7' + phone[1:]
+        elif phone.startswith('7') and len(phone) == 12:
+            phone = '+' + phone
 
-        if not isinstance(quantity, int) or quantity <= 0:
-            return Response({'error': 'Количество должно быть целым числом больше нуля'}, status=400)
+        phone_number = to_python(phone)
+        if not phone_number or not phone_number.is_valid():
+            raise serializers.ValidationError('Введите номер в формате +7XXX... или 8XXX...')
+        return str(phone_number)
 
-        try:
-            product = Product.objects.get(pk=product_id)
-        except Product.DoesNotExist:
-            return Response({'error': f'Продукт {product_id} не найден'}, status=400)
+@api_view(['GET', 'POST'])
+def register_order(request):
+    serializer = OrderSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
 
+    order = Order.objects.create(
+        first_name=serializer.validated_data['firstname'],
+        last_name=serializer.validated_data.get('lastname', ''),
+        phone_number=serializer.validated_data['phonenumber'],
+        address=serializer.validated_data['address']
+    )
+
+    for product_item in serializer.validated_data['products']:
         OrderItem.objects.create(
             order=order,
-            product=product,  #!!!!!!!!!!!!!!!!!!!!!!!!!! product_id=product_item['product']
+            product_id=product_item['product'],
             quantity=product_item['quantity']
         )
 
