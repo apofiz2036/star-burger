@@ -97,6 +97,14 @@ class OrderSerializer(Serializer):
             raise serializers.ValidationError('Введите номер в формате +7XXX... или 8XXX...')
         return str(phone_number)
 
+
+class OrderResponseSerializer(Serializer):
+    id = IntegerField(read_only=True)
+    firstname = CharField(source='first_name')
+    lastname = CharField(source='last_name')
+    phonenumber = CharField(source='phone_number')
+    address = CharField()
+
 @api_view(['GET', 'POST'])
 def register_order(request):
     serializer = OrderSerializer(data=request.data)
@@ -116,4 +124,5 @@ def register_order(request):
             quantity=product_item['quantity']
         )
 
-    return Response({'status': 'ok'})
+    response_serializer = OrderResponseSerializer(order)
+    return Response(response_serializer.data)
