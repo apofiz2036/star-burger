@@ -7,7 +7,7 @@ from django.db.models import F, Sum
 class OrderQuerySet(models.QuerySet):
     def with_total_cost(self):
         return self.annotate(
-            total_cost=Sum(F('order_items__quantity') * F('order_items__product__price'))
+            total_cost=Sum(F('order_items__quantity') * F('order_items__fixed_price'))
         )
 
 
@@ -174,6 +174,19 @@ class OrderItem(models.Model):
         verbose_name='Количество',
         validators=[MinValueValidator(1)]
     )
+    fixed_price = models.DecimalField(
+        'Фиксированная цена',
+        max_digits=8,
+        decimal_places=2,
+        validators=[MinValueValidator(0)],
+        null=False,
+        blank=True
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.pk and self.fixed_price is None:
+            self.fixed_price = self.product.price
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'позиция заказа'
