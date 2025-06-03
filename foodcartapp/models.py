@@ -133,6 +133,13 @@ class RestaurantMenuItem(models.Model):
 
 
 class Order(models.Model):
+    STATUS = (
+        ('MANAGER', 'Менеджер'),
+        ('RESTAURANT', 'Ресторан'),
+        ('COURIER', 'Курьер'),
+        ('COMPLETED', 'Завершён')
+    )
+
     first_name = models.CharField(max_length=100, verbose_name='Имя')
     last_name = models.CharField(
         max_length=100,
@@ -148,6 +155,13 @@ class Order(models.Model):
         verbose_name='Товары'
     )
     objects = OrderQuerySet.as_manager()
+    order_status = models.CharField(
+        max_length=50,
+        choices=STATUS,
+        default='MANAGER',
+        verbose_name='Статус заказа',
+        db_index=True
+    )
 
     class Meta:
         verbose_name = 'заказ'

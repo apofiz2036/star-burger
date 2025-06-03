@@ -120,8 +120,21 @@ class OrderItemInline(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
-    list_display = ['id', 'first_name', 'phone_number', 'address']
+    list_display = [
+        'id', 'first_name',
+        'phone_number', 'address',
+        'order_status'
+    ]
+    list_filter = ['order_status']
     search_fields = ['first_name', 'phone_number', 'address']
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        params = request.GET.dict()
+
+        if not any(param.startswith(('order_status', 'q', 'search')) for param in params):
+            qs = qs.exclude(order_status='COMPLETED')
+        return qs
 
     def response_change(self, request, obj):
         if '_continue' not in request.POST:
