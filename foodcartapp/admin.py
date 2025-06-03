@@ -111,7 +111,7 @@ class ProductAdmin(admin.ModelAdmin):
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     extra = 0
-    fields = ['product', 'quantity']
+    fields = ['product', 'quantity', 'fixed_price']
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):

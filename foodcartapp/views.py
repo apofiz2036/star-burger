@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.templatetags.static import static
 from django.shortcuts import get_object_or_404
+from django.db import transaction
 
 from rest_framework import serializers
 from rest_framework.decorators import api_view
@@ -105,24 +106,29 @@ class OrderResponseSerializer(Serializer):
     phonenumber = CharField(source='phone_number')
     address = CharField()
 
+
 @api_view(['GET', 'POST'])
 def register_order(request):
     serializer = OrderSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
 
-    order = Order.objects.create(
-        first_name=serializer.validated_data['firstname'],
-        last_name=serializer.validated_data.get('lastname', ''),
-        phone_number=serializer.validated_data['phonenumber'],
-        address=serializer.validated_data['address']
-    )
+    try:
+        with transaction.atomic():
+            order = Order.objects.create(
+                first_name=serializer.validated_data['firstname'],
+                last_name=serializer.validated_data.get('lastname', ''),
+                phone_number=serializer.validated_data['phonenumber'],
+                address=serializer.validated_data['address']
+            )
 
-    for product_item in serializer.validated_data['products']:
-        OrderItem.objects.create(
-            order=order,
-            product_id=product_item['product'],
-            quantity=product_item['quantity']
-        )
+            for product_item in serializer.validated_data['products']:
+                OrderItem.objects.create(
+                    order=order,
+                    product_id=product_item['product'],
+                    quantity=product_item['quantity']
+                )
 
-    response_serializer = OrderResponseSerializer(order)
-    return Response(response_serializer.data)
+            response_serializer = OrderResponseSerializer(order)
+            return Response(response_serializer.data)
+    except Exception as e:
+        return Response({"error": str(e)}, status=400)
