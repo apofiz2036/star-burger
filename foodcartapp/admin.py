@@ -123,7 +123,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = [
         'id', 'first_name',
         'phone_number', 'address',
-        'order_status'
+        'order_status', 'comment'
     ]
     list_filter = ['order_status']
     search_fields = ['first_name', 'phone_number', 'address']
