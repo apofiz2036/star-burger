@@ -124,9 +124,13 @@ class OrderAdmin(admin.ModelAdmin):
         'id', 'first_name',
         'phone_number', 'address',
         'order_status', 'comment',
-        'created_at'
+        'created_at', 'payment_method'
     ]
-    list_filter = ['order_status', 'created_at', 'called_at', 'delivered_at']
+    list_filter = [
+        'order_status', 'created_at',
+        'called_at', 'delivered_at',
+        'payment_method'
+    ]
     search_fields = ['first_name', 'phone_number', 'address']
 
     def get_queryset(self, request):

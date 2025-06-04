@@ -140,6 +140,10 @@ class Order(models.Model):
         ('COURIER', 'Курьер'),
         ('COMPLETED', 'Завершён')
     )
+    PAYMENT = (
+        ('ELECTRONIC', 'Электронно'),
+        ('CASH', 'Наличностью')
+    )
 
     first_name = models.CharField(max_length=100, verbose_name='Имя')
     last_name = models.CharField(
@@ -162,6 +166,14 @@ class Order(models.Model):
         default='MANAGER',
         verbose_name='Статус заказа',
         db_index=True
+    )
+    payment_method = models.CharField(
+        max_length=50,
+        choices=PAYMENT,
+        verbose_name='Способ оплаты',
+        db_index=True,
+        null=True,
+        blank=True
     )
     comment = models.CharField(
         max_length=2000,
