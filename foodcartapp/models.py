@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from phonenumber_field.modelfields import PhoneNumberField
-from django.db.models import F, Sum
+from django.db.models import F, Sum, Count, Q
 from django.utils import timezone
 
 
@@ -199,6 +199,33 @@ class Order(models.Model):
         null=True,
         blank=True
     )
+    restaurant = models.ForeignKey(
+        Restaurant,
+        related_name='orders',
+        verbose_name='Ресторан',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
+
+    def get_available_restaurants(self):
+        order_product_ids = set(self.products.values_list('id', flat=True))
+
+        return Restaurant.objects.filter(
+            menu_items__product__in=order_product_ids,
+            menu_items__availability=True
+        ).annotate(
+            num_products=Count('menu_items__product')
+        ).filter(
+            num_products=len(order_product_ids)
+        ).distinct()
+
+    def assign_restaurant(self, restaurant):
+        if restaurant not in self.get_available_restaurants():
+            raise ValueError("Этот ресторан не может приготовить заказ!")
+        self.restaurant = restaurant
+        self.order_status = 'RESTAURANT'
+        self.save()
 
     class Meta:
         verbose_name = 'заказ'

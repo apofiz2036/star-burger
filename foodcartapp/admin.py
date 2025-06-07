@@ -133,12 +133,28 @@ class OrderAdmin(admin.ModelAdmin):
     ]
     search_fields = ['first_name', 'phone_number', 'address']
 
+    def save_model(self, request, obj, form, change):
+        if 'restaurant' in form.changed_data and obj.restaurant:
+            obj.order_status = 'RESTAURANT'
+        super().save_model(request, obj, form, change)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'restaurant':
+            order_id = request.resolver_match.kwargs.get('object_id')
+            if order_id:
+                order = Order.objects.get(id=order_id)
+                kwargs['queryset'] = order.get_available_restaurants()
+            else:
+                kwargs['queryset'] = Restaurant.objects.none()
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         params = request.GET.dict()
 
         if not any(param.startswith(('order_status', 'q', 'search')) for param in params):
             qs = qs.exclude(order_status='COMPLETED')
+
         return qs
 
     def response_change(self, request, obj):
