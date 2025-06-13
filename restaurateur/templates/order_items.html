@@ -41,8 +41,15 @@
             {% else %}
               Могут приготовить:
                 <ul>
-                  {% for restaurant in order.get_available_restaurants %}
-                    <li>{{restaurant.name }}</li>
+                  {% for restaurant in order.available_restaurants %}
+                    <li>
+                      {{ restaurant.name }}
+                      {% if restaurant.distance is not None %}
+                         - {{ restaurant.distance|floatformat:2 }} км
+                      {% else %}
+                        (расстояние не определено)
+                      {% endif %}
+                    </li>
                   {% empty %}
                     <li>Нет подходящих ресторанов</li>
                   {% endfor %}

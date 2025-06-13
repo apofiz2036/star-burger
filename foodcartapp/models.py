@@ -27,6 +27,8 @@ class Restaurant(models.Model):
         max_length=50,
         blank=True,
     )
+    latitude = models.FloatField('широта', null=True, blank=True)
+    longitude = models.FloatField('долгота', null=True, blank=True)
 
     class Meta:
         verbose_name = 'ресторан'
