@@ -9,6 +9,7 @@ from django.contrib.auth import views as auth_views
 
 
 from foodcartapp.models import Product, Restaurant, Order
+from coordinates.models import AddressCoordinates
 
 from geopy.distance import distance
 import requests
@@ -24,23 +25,39 @@ def calculate_distance(restaurant_lat, restaurant_lon, order_lat, order_lon):
 
 
 def fetch_coordinates(address):
-    load_dotenv()
-    base_url = "https://geocode-maps.yandex.ru/1.x"
-    apikey = os.getenv('YANDEX_API')
-    response = requests.get(base_url, params={
-        "geocode": address,
-        "apikey": apikey,
-        "format": "json",
-    })
-    response.raise_for_status()
-    found_places = response.json()['response']['GeoObjectCollection']['featureMember']
+    try:
+        coord = AddressCoordinates.objects.get(address=address)
+        return coord.lon, coord.lat
+    except AddressCoordinates.DoesNotExist:
+        pass
 
-    if not found_places:
+    try:
+        load_dotenv()
+        base_url = "https://geocode-maps.yandex.ru/1.x"
+        apikey = os.getenv('YANDEX_API')
+        response = requests.get(base_url, params={
+            "geocode": address,
+            "apikey": apikey,
+            "format": "json",
+        })
+        response.raise_for_status()
+        found_places = response.json()['response']['GeoObjectCollection']['featureMember']
+
+        if not found_places:
+            AddressCoordinates.objects.create(address=address)
+            return None
+
+        most_relevant = found_places[0]
+        lon, lat = most_relevant['GeoObject']['Point']['pos'].split(" ")
+
+        AddressCoordinates.objects.create(
+            address=address,
+            lat=lat,
+            lon=lon
+        )
+        return lon, lat
+    except Exception as e:
         return None
-
-    most_relevant = found_places[0]
-    lon, lat = most_relevant['GeoObject']['Point']['pos'].split(" ")
-    return lon, lat
 
 
 class Login(forms.Form):
