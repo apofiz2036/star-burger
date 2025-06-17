@@ -3,16 +3,15 @@ from django.templatetags.static import static
 from django.shortcuts import get_object_or_404
 from django.db import transaction
 
-from rest_framework import serializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.serializers import Serializer, IntegerField, CharField, ListField
-
-from phonenumber_field.phonenumber import to_python
 
 from .models import Product
 from .models import Order
 from .models import OrderItem
+
+from .serializers import OrderItemSerializer, OrderSerializer, OrderResponseSerializer
+
 
 def banners_list_api(request):
     # FIXME move data to db?
@@ -66,45 +65,16 @@ def product_list_api(request):
     })
 
 
-class OrderItemSerializer(Serializer):
-    product = IntegerField()
-    quantity = IntegerField(min_value=1)
-
-    def validate_product(self, value):
-        if not Product.objects.filter(id=value).exists():
-            raise serializers.ValidationError(f'Продукт {value} не найден')
-        return value
-
-
-class OrderSerializer(Serializer):
-    firstname = CharField(max_length=50, required=True)
-    lastname = CharField(max_length=50, required=False, allow_blank=True)
-    phonenumber = CharField(max_length=20, required=True)
-    address = CharField(max_length=100, required=True)
-    products = ListField(
-        child=OrderItemSerializer(),
-        allow_empty=False
-    )
-
-    def validate_phonenumber(self, value):
-        phone = value.strip()
-        if phone.startswith('8') and len(phone) == 11:
-            phone = '+7' + phone[1:]
-        elif phone.startswith('7') and len(phone) == 12:
-            phone = '+' + phone
-
-        phone_number = to_python(phone)
-        if not phone_number or not phone_number.is_valid():
-            raise serializers.ValidationError('Введите номер в формате +7XXX... или 8XXX...')
-        return str(phone_number)
-
-
-class OrderResponseSerializer(Serializer):
-    id = IntegerField(read_only=True)
-    firstname = CharField(source='first_name')
-    lastname = CharField(source='last_name')
-    phonenumber = CharField(source='phone_number')
-    address = CharField()
+def fetch_and_save_coordinates(instance):
+    try:
+        from geocoder import fetch_coordinates 
+        lon, lat = fetch_coordinates(instance.address)
+        instance.address_lon = lon
+        instance.address_lat = lat
+    except Exception as e:
+        instance.address_lon = None
+        instance.address_lat = None
+    instance.save()
 
 
 @api_view(['GET', 'POST'])
@@ -112,23 +82,8 @@ def register_order(request):
     serializer = OrderSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
 
-    try:
-        with transaction.atomic():
-            order = Order.objects.create(
-                first_name=serializer.validated_data['firstname'],
-                last_name=serializer.validated_data.get('lastname', ''),
-                phone_number=serializer.validated_data['phonenumber'],
-                address=serializer.validated_data['address']
-            )
-
-            for product_item in serializer.validated_data['products']:
-                OrderItem.objects.create(
-                    order=order,
-                    product_id=product_item['product'],
-                    quantity=product_item['quantity']
-                )
-
-            response_serializer = OrderResponseSerializer(order)
-            return Response(response_serializer.data)
-    except Exception as e:
-        return Response({"error": str(e)}, status=400)
+    with transaction.atomic():
+        order = serializer.save()
+        fetch_and_save_coordinates(order)
+        response_serializer = OrderResponseSerializer(order)
+        return Response(response_serializer.data)

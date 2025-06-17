@@ -21,11 +21,13 @@ class Restaurant(models.Model):
         'адрес',
         max_length=100,
         blank=True,
+        default='', 
     )
     contact_phone = models.CharField(
         'контактный телефон',
         max_length=50,
         blank=True,
+        default='',
     )
     latitude = models.FloatField('широта', null=True, blank=True)
     longitude = models.FloatField('долгота', null=True, blank=True)
@@ -36,6 +38,11 @@ class Restaurant(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.address and (not self.address_lon or not self.address_lat):
+            fetch_and_save_coordinates(self)
 
 
 class ProductQuerySet(models.QuerySet):
@@ -93,6 +100,7 @@ class Product(models.Model):
         'описание',
         max_length=200,
         blank=True,
+        default=''
     )
 
     objects = ProductQuerySet.as_manager()
@@ -151,7 +159,7 @@ class Order(models.Model):
     last_name = models.CharField(
         max_length=100,
         verbose_name='Фамилия',
-        null=True,
+        default='',
         blank=True
     )
     phone_number = PhoneNumberField(verbose_name='Телефон')
@@ -174,13 +182,13 @@ class Order(models.Model):
         choices=PAYMENT,
         verbose_name='Способ оплаты',
         db_index=True,
-        null=True,
+        default='',
         blank=True
     )
     comment = models.CharField(
         max_length=2000,
         verbose_name='Комментарий',
-        null=True,
+        default='',
         blank=True
     )
     created_at = models.DateTimeField(
@@ -209,6 +217,8 @@ class Order(models.Model):
         null=True,
         blank=True
     )
+    address_lon = models.FloatField('Долгота адреса', null=True, blank=True)
+    address_lat = models.FloatField('Широта адреса', null=True, blank=True)
 
     def get_available_restaurants(self):
         order_product_ids = set(self.products.values_list('id', flat=True))
