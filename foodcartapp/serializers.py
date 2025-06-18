@@ -11,11 +11,6 @@ class OrderItemSerializer(serializers.ModelSerializer):
         model = OrderItem
         fields = ['product', 'quantity']
 
-    def validate_product(self, value):
-        if not Product.objects.filter(id=value.id).exists():
-            raise serializers.ValidationError(f'Продукт {value.id} не найден')
-        return value
-
 
 class OrderSerializer(serializers.ModelSerializer):
     phonenumber = PhoneNumberField()

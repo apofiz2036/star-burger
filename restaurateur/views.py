@@ -145,21 +145,18 @@ def view_orders(request):
     active_orders = orders.exclude(order_status='COMPLETED')
 
     for order in active_orders:
-        try:
-            order_lon, order_lat = fetch_coordinates(order.address)
-        except Exception as e:
-            order_lon, order_lat = None, None
-
+        order_lon = order.address_lon
+        order_lat = order.address_lat
         available_restaurants = []
+
         for restaurant in order.get_available_restaurants():
-            try:
-                restaurant_lon, restaurant_lat = fetch_coordinates(restaurant.address)
-                dist = calculate_distance(
-                    restaurant_lon, restaurant_lat,
-                    order_lon, order_lat
-                ) if all((restaurant_lat, restaurant_lon, order_lat, order_lon)) else None
-            except Exception as e:
-                dist = None
+            restaurant_lon = restaurant.longitude
+            restaurant_lat = restaurant.latitude
+
+            dist = calculate_distance(
+                restaurant_lon, restaurant_lat,
+                order_lon, order_lat
+            ) if all((restaurant_lat, restaurant_lon, order_lat, order_lon)) else None
 
             available_restaurants.append({
                 'name': restaurant.name,
