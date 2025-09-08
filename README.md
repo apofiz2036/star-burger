@@ -153,6 +153,10 @@ Parcel будет следить за файлами в каталоге `bundle
 Сайт использует Rollbar. Для его работы необходимо указать в .env файле токен с сайта для работы Rollbar.
 - `ROLLBAR_TOKEN` - токен Rollbar
 
+## PostgreSQL
+Сайт использует PostgreSQL. Для его работы в файле .env необходимо указать путь к базе данных. Например так:
+DATABASE_URL=postgres://имя_пользователя:пароль@localhost:5432/starburger
+
 ## Цели проекта
 
 Код написан в учебных целях — это урок в курсе по Python и веб-разработке на сайте [Devman](https://dvmn.org). За основу был взят код проекта [FoodCart](https://github.com/Saibharath79/FoodCart).
