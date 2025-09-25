@@ -181,3 +181,5 @@ DATABASE_URL=postgres://имя_пользователя:пароль@localhost:5
 Где используется репозиторий:
 
 - Второй и третий урок [учебного курса Django](https://dvmn.org/modules/django/)
+
+.
