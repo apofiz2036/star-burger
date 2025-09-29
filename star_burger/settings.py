@@ -1,8 +1,5 @@
 import os
-
 import rollbar
-import rollbar.contrib.django.middleware as rollbar_middleware
-
 import dj_database_url
 
 from environs import Env
@@ -11,22 +8,23 @@ from environs import Env
 env = Env()
 env.read_env()
 
-
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+ROLLBAR_ACCESS_TOKEN = env('ROLLBAR_ACCESS_TOKEN', default=None)
+ROLLBAR_ENVIRONMENT = 'production'
+
+if ROLLBAR_ACCESS_TOKEN:
+    rollbar.init(
+        access_token=ROLLBAR_ACCESS_TOKEN,
+        environment=ROLLBAR_ENVIRONMENT,
+        root=BASE_DIR
+    )
 
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DEBUG', True)
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', ['127.0.0.1', 'localhost'])
-
-ROLLBAR = {
-    'access_token': env('ROLLBAR_TOKEN'),
-    'environment': 'development' if DEBUG else 'production',
-}
-rollbar.init(**ROLLBAR)
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", subcast=str)
 
 INSTALLED_APPS = [
     'foodcartapp.apps.FoodcartappConfig',
@@ -52,7 +50,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'star_burger.urls'

@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
-export $(grep -v '^#' /opt/star-burger/.env | xargs)
+set -a
+source /opt/star-burger/.env
+set +a
 
 echo "Запуск виртуального окружения"
 source /opt/star-burger/venv/bin/activate
