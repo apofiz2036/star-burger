@@ -18,6 +18,7 @@ echo ""
 
 echo "Устанавливаем Node.js-библиотеки и собираем фронтенд"
 npm install
+./node_modules/.bin/parcel build bundles-src/index.js --dist-dir bundles --public-url="./"
 echo ""
 
 echo "Миграции"
