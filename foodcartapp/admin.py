@@ -122,7 +122,7 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
     list_display = [
         'id', 'first_name',
-        'phone_number', 'address',
+        'phonenumber', 'address',
         'order_status', 'comment',
         'created_at', 'payment_method'
     ]
@@ -131,7 +131,7 @@ class OrderAdmin(admin.ModelAdmin):
         'called_at', 'delivered_at',
         'payment_method'
     ]
-    search_fields = ['first_name', 'phone_number', 'address']
+    search_fields = ['first_name', 'phonenumber', 'address']
 
     def save_model(self, request, obj, form, change):
         if 'restaurant' in form.changed_data and obj.restaurant:

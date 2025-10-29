@@ -39,11 +39,6 @@ class Restaurant(models.Model):
     def __str__(self):
         return self.name
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if self.address and (not self.address_lon or not self.address_lat):
-            fetch_and_save_coordinates(self)
-
 
 class ProductQuerySet(models.QuerySet):
     def available(self):
@@ -162,7 +157,7 @@ class Order(models.Model):
         default='',
         blank=True
     )
-    phone_number = PhoneNumberField(verbose_name='Телефон')
+    phonenumber = PhoneNumberField(verbose_name='Телефон')
     address = models.CharField(max_length=200, verbose_name='Адрес')
     products = models.ManyToManyField(
         Product,

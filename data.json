@@ -1,0 +1,1702 @@
+[
+{
+  "model": "foodcartapp.restaurant",
+  "pk": 1,
+  "fields": {
+    "name": "Star Burger Арбат",
+    "address": "Москва, ул. Новый Арбат, 15",
+    "contact_phone": "+7 (967) 157-44-13",
+    "latitude": null,
+    "longitude": null
+  }
+},
+{
+  "model": "foodcartapp.restaurant",
+  "pk": 2,
+  "fields": {
+    "name": "Star Burger Цветной",
+    "address": "Москва, Цветной бульвар, 11с2",
+    "contact_phone": "+7 (929) 949-55-36",
+    "latitude": null,
+    "longitude": null
+  }
+},
+{
+  "model": "foodcartapp.restaurant",
+  "pk": 3,
+  "fields": {
+    "name": "Star Burger Европейский",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "contact_phone": "+7 (929) 680-47-58",
+    "latitude": null,
+    "longitude": null
+  }
+},
+{
+  "model": "foodcartapp.productcategory",
+  "pk": 1,
+  "fields": {
+    "name": "Бургер"
+  }
+},
+{
+  "model": "foodcartapp.productcategory",
+  "pk": 2,
+  "fields": {
+    "name": "Ролл"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 1,
+  "fields": {
+    "name": "Стейкхаус",
+    "category": 1,
+    "price": "2690.00",
+    "image": "steak.jpg",
+    "special_status": false,
+    "description": "Стейкхаус – это сочетание нашей фирменной, приготовленной на огне 100% говядины с ломтиками бекона и соусом «Барбекю», майонезом, листьями свежего салата, помидором и хрустящим луком на воздушной було"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 2,
+  "fields": {
+    "name": "Лонг Чизбургер",
+    "category": 1,
+    "price": "219.00",
+    "image": "long_chiz.jpg",
+    "special_status": false,
+    "description": "Лонг Чизбургер – эталон в коллекции чизбургеров! Два приготовленных на огне бифштекса с двумя ломтиками слегка расплавленного сыра, хрустящими огурчиками, рубленым луком, горчицей и кетчупом на длинно"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "Тройной Воппер",
+    "category": 1,
+    "price": "369.00",
+    "image": "triple_vopper.jpg",
+    "special_status": false,
+    "description": "ВОППЕР® — это вкуснейшая приготовленная на огне 100% говядина с сочными помидорами, свежим нарезанным листовым салатом, густым майонезом, хрустящими маринованными огурчиками и свежим луком на нежной б"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 4,
+  "fields": {
+    "name": "Беконайзер",
+    "category": 1,
+    "price": "319.00",
+    "image": "beconizer.jpg",
+    "special_status": false,
+    "description": "Встречай самый внушительный бургер в коллекции Бургер Кинг. Много мяса, много бекона и много сыра - все, как ты любишь, и ничего лишнего!"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 5,
+  "fields": {
+    "name": "Фиш Ролл",
+    "category": 2,
+    "price": "199.00",
+    "image": "fish_roll.jpg",
+    "special_status": false,
+    "description": "Наш новый ролл с аппетитной котлеткой из филе белой рыбы, с фирменным соусом, маринованными огурчиками и хрустящим салатом. Легкое рыбное удовольствие!"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 6,
+  "fields": {
+    "name": "Шримп Ролл",
+    "category": 2,
+    "price": "209.00",
+    "image": "shrimp_roll.jpg",
+    "special_status": false,
+    "description": "Легкий ролл с нежными королевскими креветками в хрустящей панировке, свежий салат Айсберг и ломтик сыра в пшеничной лепешке под фирменным соусом «Кинг». Внимание! Блюдо содержит аллергены – морепродук"
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 1,
+  "fields": {
+    "restaurant": 1,
+    "product": 6,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 2,
+  "fields": {
+    "restaurant": 2,
+    "product": 6,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 3,
+  "fields": {
+    "restaurant": 3,
+    "product": 6,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 4,
+  "fields": {
+    "restaurant": 1,
+    "product": 5,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 5,
+  "fields": {
+    "restaurant": 2,
+    "product": 5,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 6,
+  "fields": {
+    "restaurant": 3,
+    "product": 5,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 7,
+  "fields": {
+    "restaurant": 1,
+    "product": 4,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 8,
+  "fields": {
+    "restaurant": 2,
+    "product": 4,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 9,
+  "fields": {
+    "restaurant": 3,
+    "product": 4,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 10,
+  "fields": {
+    "restaurant": 1,
+    "product": 3,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 11,
+  "fields": {
+    "restaurant": 3,
+    "product": 3,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 12,
+  "fields": {
+    "restaurant": 2,
+    "product": 3,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 13,
+  "fields": {
+    "restaurant": 1,
+    "product": 2,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 14,
+  "fields": {
+    "restaurant": 2,
+    "product": 2,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 15,
+  "fields": {
+    "restaurant": 3,
+    "product": 2,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 16,
+  "fields": {
+    "restaurant": 1,
+    "product": 1,
+    "availability": false
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 17,
+  "fields": {
+    "restaurant": 2,
+    "product": 1,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 18,
+  "fields": {
+    "restaurant": 3,
+    "product": 1,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 1,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "COMPLETED",
+    "payment_method": "CASH",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": 2,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 2,
+  "fields": {
+    "first_name": "Иван",
+    "last_name": "Иванов",
+    "phone_number": "+79991234567",
+    "address": "Москва, ул. Пушкина, 10",
+    "order_status": "COMPLETED",
+    "payment_method": "ELECTRONIC",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": 2,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 3,
+  "fields": {
+    "first_name": "Чувак",
+    "last_name": "Чуваков",
+    "phone_number": "+79044655715",
+    "address": "14 Толстого",
+    "order_status": "COMPLETED",
+    "payment_method": "CASH",
+    "comment": "Херня",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": 3,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 4,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "COMPLETED",
+    "payment_method": "ELECTRONIC",
+    "comment": "Вторая херня",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": 3,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 5,
+  "fields": {
+    "first_name": "Иван",
+    "last_name": "Петров",
+    "phone_number": "+79044655715",
+    "address": "Москва",
+    "order_status": "RESTAURANT",
+    "payment_method": "ELECTRONIC",
+    "comment": "Дааааа блять",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": 2,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 6,
+  "fields": {
+    "first_name": "Иван",
+    "last_name": "Петров",
+    "phone_number": "+79291000000",
+    "address": "Москва",
+    "order_status": "COMPLETED",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 7,
+  "fields": {
+    "first_name": "Иван",
+    "last_name": "Петров",
+    "phone_number": "+79291000000",
+    "address": "Москва",
+    "order_status": "RESTAURANT",
+    "payment_method": "ELECTRONIC",
+    "comment": "Хуй",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": 2,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 8,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Киев",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 9,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 10,
+  "fields": {
+    "first_name": "Иван",
+    "last_name": "Петров",
+    "phone_number": "+79291000000",
+    "address": "Москва",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 11,
+  "fields": {
+    "first_name": "Чушпан",
+    "last_name": "Петров",
+    "phone_number": "+79291000000",
+    "address": "Москва",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 12,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 13,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 14,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 15,
+  "fields": {
+    "first_name": "Василий",
+    "last_name": "Васильевич",
+    "phone_number": "+79123456789",
+    "address": "Лондон",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 16,
+  "fields": {
+    "first_name": "Василий",
+    "last_name": "Васильевич",
+    "phone_number": "+79123456789",
+    "address": "Лондон",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 17,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 18,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 19,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 20,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 21,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "COMPLETED",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 22,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "COMPLETED",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 23,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "COMPLETED",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-04T07:30:00Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 24,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "COMPLETED",
+    "payment_method": "ELECTRONIC",
+    "comment": "",
+    "created_at": "2025-06-04T02:44:25Z",
+    "called_at": "2025-06-04T05:30:00Z",
+    "delivered_at": null,
+    "restaurant": 2,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 25,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "COMPLETED",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-05T02:42:11Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": null,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 26,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "MANAGER",
+    "payment_method": "",
+    "comment": "",
+    "created_at": "2025-06-05T02:52:11Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": 2,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.order",
+  "pk": 27,
+  "fields": {
+    "first_name": "Юрий",
+    "last_name": "Михайлов",
+    "phone_number": "+79044655715",
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "order_status": "COURIER",
+    "payment_method": "ELECTRONIC",
+    "comment": "",
+    "created_at": "2025-06-07T06:27:24Z",
+    "called_at": null,
+    "delivered_at": null,
+    "restaurant": 2,
+    "address_lon": null,
+    "address_lat": null
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "product": 3,
+    "quantity": 3,
+    "fixed_price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 1,
+    "product": 1,
+    "quantity": 2,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 3,
+  "fields": {
+    "order": 2,
+    "product": 1,
+    "quantity": 2,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 4,
+  "fields": {
+    "order": 2,
+    "product": 3,
+    "quantity": 1,
+    "fixed_price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 5,
+  "fields": {
+    "order": 3,
+    "product": 1,
+    "quantity": 1,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 6,
+  "fields": {
+    "order": 3,
+    "product": 2,
+    "quantity": 1,
+    "fixed_price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 7,
+  "fields": {
+    "order": 3,
+    "product": 3,
+    "quantity": 1,
+    "fixed_price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 8,
+  "fields": {
+    "order": 4,
+    "product": 1,
+    "quantity": 1,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 9,
+  "fields": {
+    "order": 5,
+    "product": 1,
+    "quantity": 2,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 10,
+  "fields": {
+    "order": 5,
+    "product": 3,
+    "quantity": 1,
+    "fixed_price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 11,
+  "fields": {
+    "order": 7,
+    "product": 1,
+    "quantity": 2,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 12,
+  "fields": {
+    "order": 7,
+    "product": 3,
+    "quantity": 1,
+    "fixed_price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 13,
+  "fields": {
+    "order": 8,
+    "product": 3,
+    "quantity": 1,
+    "fixed_price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 14,
+  "fields": {
+    "order": 9,
+    "product": 1,
+    "quantity": 1,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 15,
+  "fields": {
+    "order": 9,
+    "product": 2,
+    "quantity": 1,
+    "fixed_price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 16,
+  "fields": {
+    "order": 9,
+    "product": 3,
+    "quantity": 1,
+    "fixed_price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 17,
+  "fields": {
+    "order": 10,
+    "product": 1,
+    "quantity": 2,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 18,
+  "fields": {
+    "order": 10,
+    "product": 3,
+    "quantity": 1,
+    "fixed_price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 19,
+  "fields": {
+    "order": 11,
+    "product": 1,
+    "quantity": 1,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 20,
+  "fields": {
+    "order": 12,
+    "product": 2,
+    "quantity": 1,
+    "fixed_price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 21,
+  "fields": {
+    "order": 13,
+    "product": 4,
+    "quantity": 5,
+    "fixed_price": "319.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 22,
+  "fields": {
+    "order": 14,
+    "product": 3,
+    "quantity": 4,
+    "fixed_price": "369.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 23,
+  "fields": {
+    "order": 15,
+    "product": 1,
+    "quantity": 1,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 24,
+  "fields": {
+    "order": 16,
+    "product": 1,
+    "quantity": 1,
+    "fixed_price": "269.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 25,
+  "fields": {
+    "order": 22,
+    "product": 1,
+    "quantity": 1,
+    "fixed_price": "2690.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 26,
+  "fields": {
+    "order": 23,
+    "product": 2,
+    "quantity": 1,
+    "fixed_price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 27,
+  "fields": {
+    "order": 24,
+    "product": 1,
+    "quantity": 4,
+    "fixed_price": "2690.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 28,
+  "fields": {
+    "order": 25,
+    "product": 1,
+    "quantity": 1,
+    "fixed_price": "2690.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 29,
+  "fields": {
+    "order": 26,
+    "product": 2,
+    "quantity": 2,
+    "fixed_price": "219.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 30,
+  "fields": {
+    "order": 26,
+    "product": 1,
+    "quantity": 2,
+    "fixed_price": "2690.00"
+  }
+},
+{
+  "model": "foodcartapp.orderitem",
+  "pk": 31,
+  "fields": {
+    "order": 27,
+    "product": 1,
+    "quantity": 1,
+    "fixed_price": "2690.00"
+  }
+},
+{
+  "model": "coordinates.addresscoordinates",
+  "pk": 1,
+  "fields": {
+    "address": "Г.Югорск ул.Железнодорожная Д49. Кв.3",
+    "lat": 61.313509,
+    "lon": 63.340875,
+    "updated_at": "2025-06-13"
+  }
+},
+{
+  "model": "coordinates.addresscoordinates",
+  "pk": 2,
+  "fields": {
+    "address": "Москва, Цветной бульвар, 11с2",
+    "lat": 55.770076,
+    "lon": 37.620429,
+    "updated_at": "2025-06-13"
+  }
+},
+{
+  "model": "coordinates.addresscoordinates",
+  "pk": 3,
+  "fields": {
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "lat": 55.744637,
+    "lon": 37.566072,
+    "updated_at": "2025-06-13"
+  }
+},
+{
+  "model": "coordinates.addresscoordinates",
+  "pk": 4,
+  "fields": {
+    "address": "Москва, ул. Новый Арбат, 15",
+    "lat": 55.751933,
+    "lon": 37.593066,
+    "updated_at": "2025-06-13"
+  }
+},
+{
+  "model": "coordinates.addresscoordinates",
+  "pk": 5,
+  "fields": {
+    "address": "Москва",
+    "lat": 55.755864,
+    "lon": 37.617698,
+    "updated_at": "2025-06-13"
+  }
+},
+{
+  "model": "coordinates.addresscoordinates",
+  "pk": 6,
+  "fields": {
+    "address": "Лондон",
+    "lat": 51.507351,
+    "lon": -0.127696,
+    "updated_at": "2025-06-13"
+  }
+},
+{
+  "model": "coordinates.addresscoordinates",
+  "pk": 7,
+  "fields": {
+    "address": "Киев",
+    "lat": 50.450441,
+    "lon": 30.52355,
+    "updated_at": "2025-06-13"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add товар",
+    "content_type": 1,
+    "codename": "add_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change товар",
+    "content_type": 1,
+    "codename": "change_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete товар",
+    "content_type": 1,
+    "codename": "delete_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view товар",
+    "content_type": 1,
+    "codename": "view_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add ресторан",
+    "content_type": 2,
+    "codename": "add_restaurant"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change ресторан",
+    "content_type": 2,
+    "codename": "change_restaurant"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete ресторан",
+    "content_type": 2,
+    "codename": "delete_restaurant"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view ресторан",
+    "content_type": 2,
+    "codename": "view_restaurant"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add пункт меню ресторана",
+    "content_type": 3,
+    "codename": "add_restaurantmenuitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change пункт меню ресторана",
+    "content_type": 3,
+    "codename": "change_restaurantmenuitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete пункт меню ресторана",
+    "content_type": 3,
+    "codename": "delete_restaurantmenuitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view пункт меню ресторана",
+    "content_type": 3,
+    "codename": "view_restaurantmenuitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add категория",
+    "content_type": 4,
+    "codename": "add_productcategory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change категория",
+    "content_type": 4,
+    "codename": "change_productcategory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete категория",
+    "content_type": 4,
+    "codename": "delete_productcategory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view категория",
+    "content_type": 4,
+    "codename": "view_productcategory"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 5,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 5,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 5,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 5,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 6,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 6,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 6,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 6,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 7,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 7,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 7,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 7,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 8,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 8,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 8,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 8,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 9,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 9,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 9,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 9,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 10,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 10,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 10,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 10,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add заказ",
+    "content_type": 11,
+    "codename": "add_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change заказ",
+    "content_type": 11,
+    "codename": "change_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete заказ",
+    "content_type": 11,
+    "codename": "delete_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view заказ",
+    "content_type": 11,
+    "codename": "view_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add позиция заказа",
+    "content_type": 12,
+    "codename": "add_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change позиция заказа",
+    "content_type": 12,
+    "codename": "change_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete позиция заказа",
+    "content_type": 12,
+    "codename": "delete_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view позиция заказа",
+    "content_type": 12,
+    "codename": "view_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add Координаты адреса",
+    "content_type": 13,
+    "codename": "add_addresscoordinates"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change Координаты адреса",
+    "content_type": 13,
+    "codename": "change_addresscoordinates"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete Координаты адреса",
+    "content_type": 13,
+    "codename": "delete_addresscoordinates"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view Координаты адреса",
+    "content_type": 13,
+    "codename": "view_addresscoordinates"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$fNooiuxFUrAl0w5t4FtN8a$AH5hT2MICWqvEfJjof9N0JZJlnL8ApcVQBoriyStQv8=",
+    "last_login": "2025-06-13T11:02:30.092Z",
+    "is_superuser": true,
+    "username": "apofiz",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-05-14T12:16:21.677Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "63rgiy9ygua2ht7sus8frmk6thnhu1zg",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSHAyEOX7vsNZBhAqgaS0q6M_25JutDtPefcN_O4rcVvPS1-juzKJDv9bgHpmeoA8YH13ji1ui5z4EPhB-18ajG9bof7d1Cwl70GJJNBg3QZhDbWSkAElUlR0llLdJZsUuYso9iFIEK8ODFQtgIcss8Xz1A3ZA:1uQ2B4:3wmKGduYbxQaTxgLc5kcR6AAYgH6iB8V_SrT9sIUIvY",
+    "expire_date": "2025-06-27T11:02:30.153Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "l6fg9d8joam9vsxbbx0qfl6xtfupi67r",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSHAyEOX7vsNZBhAqgaS0q6M_25JutDtPefcN_O4rcVvPS1-juzKJDv9bgHpmeoA8YH13ji1ui5z4EPhB-18ajG9bof7d1Cwl70GJJNBg3QZhDbWSkAElUlR0llLdJZsUuYso9iFIEK8ODFQtgIcss8Xz1A3ZA:1uHfru:DfMXwdrLY_EZs8rhD4LKNcitSEuaRQNR1PxIbnN-a38",
+    "expire_date": "2025-06-04T09:36:10.480Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "oj7ft3yozlk7a709juwlxl9de67jqn7s",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSHAyEOX7vsNZBhAqgaS0q6M_25JutDtPefcN_O4rcVvPS1-juzKJDv9bgHpmeoA8YH13ji1ui5z4EPhB-18ajG9bof7d1Cwl70GJJNBg3QZhDbWSkAElUlR0llLdJZsUuYso9iFIEK8ODFQtgIcss8Xz1A3ZA:1uM4s1:CDtBC5VcN5tS2xK2uiOFSlyHB1ARa9DWzmZ0kODzm9M",
+    "expire_date": "2025-06-16T13:06:29.454Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "rbx4solw4gc1n1hb1bqw1lxbuxp332it",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSHAyEOX7vsNZBhAqgaS0q6M_25JutDtPefcN_O4rcVvPS1-juzKJDv9bgHpmeoA8YH13ji1ui5z4EPhB-18ajG9bof7d1Cwl70GJJNBg3QZhDbWSkAElUlR0llLdJZsUuYso9iFIEK8ODFQtgIcss8Xz1A3ZA:1uJVyx:ap1ERxp9b4dOlLKUnidi1f6no_HTH1-BUuj3Xpe2Wo8",
+    "expire_date": "2025-06-09T11:27:03.258Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "tu0pd73sq0s2d6tg46svo960d3hnmhhe",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGllZG5NdSnrOYO36gwPIluKkQtwdIqWA9s3MeynP61L82tPsp6jOCtThdxMOj1Q3EO9cb02HVpd5Er0peqddX1tMz8vu_h0U7uVbC6CNSIYkmQjGZEFyxCORADjkMLiYAY4Z8IQAxtKYMAkYx2AzD-r9AcofNxQ:1uFB2V:OVqemC-1C_fUZJf9MVK1ZFYK3P6AuDTM1p8v0UL0Nsk",
+    "expire_date": "2025-05-28T12:16:47.658Z"
+  }
+}
+]

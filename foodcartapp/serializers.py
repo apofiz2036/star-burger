@@ -22,7 +22,6 @@ class OrderSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'firstname': {'source': 'first_name'},
             'lastname': {'source': 'last_name'},
-            'phonenumber': {'source': 'phone_number'},
         }
 
     def create(self, validated_data):
@@ -30,7 +29,7 @@ class OrderSerializer(serializers.ModelSerializer):
         order = Order.objects.create(
             first_name=validated_data['first_name'],
             last_name=validated_data.get('last_name', ''),
-            phone_number=validated_data['phone_number'],
+            phonenumber=validated_data['phonenumber'],
             address=validated_data['address']
         )
 
@@ -51,5 +50,4 @@ class OrderResponseSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'firstname': {'source': 'first_name'},
             'lastname': {'source': 'last_name'},
-            'phonenumber': {'source': 'phone_number'},
         }
