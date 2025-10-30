@@ -18,15 +18,29 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
+      - ./media:/app/media
     ports:
       - "8000:8000"
     depends_on:
       - db
+      - frontend
     environment:
       DEBUG: "1"
       SECRET_KEY: "your_secret_key"
       ALLOWED_HOSTS: "localhost,127.0.0.1"
       DATABASE_URL: "postgres://starburger:starburgerpass@db:5432/starburgerdb"
+
+  frontend:
+    image: node:16
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: >
+      sh -c "npm ci && ./node_modules/.bin/parcel watch bundles-src/index.js --dist-dir bundles --public-url='./'"
+    ports:
+      - "1234:1234"
+    environment:
+      NODE_ENV: development
 
 volumes:
   postgres_data:

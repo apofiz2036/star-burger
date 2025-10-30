@@ -167,6 +167,32 @@ Parcel будет следить за файлами в каталоге `bundle
 Сайт использует PostgreSQL. Для его работы в файле .env необходимо указать путь к базе данных. Например так:
 DATABASE_URL=postgres://имя_пользователя:пароль@localhost:5432/starburger
 
+## Запуск через Docker Compose
+Для локального запуска проекта в Docker используйте docker-compose.  
+Он использует два контейнера — бэкенд (Django) и базу данных PostgreSQL, а также фронтенд (Parcel).
+
+**Шаги для запуска**
+1. Убедитесь, что установлены [Docker](https://docs.docker.com/get-started/get-docker/) и [Docker Compose](https://docs.docker.com/compose/install/).
+2. Клонируйте репозиторий и перейдите в папку проекта:
+```bash
+git clone https://github.com/apofiz2036/star-burger.git
+cd star-burger
+```
+3. Соберите и запустите контейнеры:
+```bash
+docker-compose up --build
+```
+4. После запуска сайт будет доступен по адресу:
+[http://localhost:8000](http://localhost:8000/)
+
+База данных, статические файлы и медиа сохраняются между перезапусками.
+Фронтенд и бэкенд работают в разных контейнерах.
+
+Чтобы остановить контейнеры:
+```bash
+docker-compose down
+```
+
 ## Цели проекта
 
 Код написан в учебных целях — это урок в курсе по Python и веб-разработке на сайте [Devman](https://dvmn.org). За основу был взят код проекта [FoodCart](https://github.com/Saibharath79/FoodCart).
